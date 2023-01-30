@@ -1,5 +1,5 @@
 /* eslint-disable import/no-anonymous-default-export */
-import Task from "../../../models/Task";
+import Task from "@/models/Task";
 import dbConnect from "@/utils/dbConnect";
 
 export default async (req, res) => {
@@ -11,9 +11,9 @@ export default async (req, res) => {
     if (method === "PUT") {
         try {
             const result = await Task.findByIdAndUpdate(id, { $set: req.body },{new: true});
-            res.status(200).json({data: result, message:"Task updated successfully"})
+            res.status(200).json(result)
         } catch (error) {
-            res.status(500).json({ message: ` Internal Server Error: ${error}` });
+            res.status(500).json({ message: ` Internal Server Error put: ${error}` });
             console.log(error);
         } 
     }
@@ -24,7 +24,7 @@ export default async (req, res) => {
             await Task.findByIdAndDelete(id);
             res.status(200).json({message: "Successfully Deleted!"})
         } catch (error) {
-            res.status(500).json({ message: ` Internal Server Error: ${error}` });
+            res.status(500).json({ message: ` Internal Server Error delete: ${error}` });
             console.log(error);
         } 
     }

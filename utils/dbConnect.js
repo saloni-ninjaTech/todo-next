@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-
+mongoose.set('strictQuery', true);
 const DB_URL = process.env.DB_URL;
 
 if (!DB_URL) {
@@ -18,10 +18,7 @@ const dbConnect = async () => {
         return cached.conn;
     }
     if (!cached.promise) {
-        const options = {
-            useNewUrlParser: true,
-            useUnifiedTopology: true
-        };
+        const options = { useNewUrlParser: true, useUnifiedTopology: true };
 
         cached.promise = mongoose.connect(DB_URL, options).then((mongoose) => {
             return mongoose;
