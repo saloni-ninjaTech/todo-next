@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 mongoose.set('strictQuery', true);
-const DB_URL = process.env.DB_URL;
+const DB_URL = process.env.MONGODB_URI;
 
 if (!DB_URL) {
     throw new Error("Please define DB URL in environment variable inside env.local")

@@ -13,8 +13,9 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
 
+// DB_URL = "mongodb+srv://saloniNinja:BRhSEb8aK8V9zWIE@cluster0.fkamxab.mongodb.net/?retryWrites=true&w=majority"
 
-const url = `${URL}/api/task`;
+const url = `${process.env.URL}/api/task`;
 
 export default function Home(props) {
   const [taskField, setTaskField] = useState("");
