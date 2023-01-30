@@ -14,7 +14,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
 
 
-const url = "http://localhost:3000/api/task";
+const url = `${URL}/api/task`;
 
 export default function Home(props) {
   const [taskField, setTaskField] = useState("");
