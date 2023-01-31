@@ -10,7 +10,9 @@ export default async (req, res) => {
     // create
     if (method === "POST") {
         try {
+            console.log("body:", req.body)
             const newTask = await new Task(req.body).save();
+            console.log("new task:",newTask)
             res.status(201).json(newTask)
         } catch (error) {
             res.status(500).json({ message: ` Internal Server Error post: ${error}` });

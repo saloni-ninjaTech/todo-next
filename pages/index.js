@@ -14,15 +14,16 @@ import EditIcon from '@mui/icons-material/Edit';
 import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
 
 // DB_URL = "mongodb+srv://saloniNinja:BRhSEb8aK8V9zWIE@cluster0.fkamxab.mongodb.net/?retryWrites=true&w=majority"
-
-const url = `${process.env.URL}/api/task`;
+const url = `${process.env.NEXT_PUBLIC_URL}/api/task`;
 
 export default function Home(props) {
   const [taskField, setTaskField] = useState("");
   const [isUpdate, setIsUpdate] = useState(false);
   const [updateId, setUpdateId] = useState("");
   const [updateTaskField, setUpdateTaskField] = useState("");
-  const [ tasks, setTasks ] = useState(props.tasks);
+  const [tasks, setTasks] = useState(props.tasks);
+  
+  
   const handleChange = ({ currentTarget: input }) => {
     setTaskField(input.value)
   }
@@ -32,10 +33,11 @@ export default function Home(props) {
 
   const handleDelete = (id, index) => {
     axios.delete(`${url}/${id}`).then(res => {
-      alert(res.data.message)
       axios.get(url).then(data => {
         setTasks(data.data);
       })
+      alert(res.data.message)
+
     })
   }
 
